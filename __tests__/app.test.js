@@ -13,6 +13,15 @@ describe('zodiacs-api routes', () => {
     const res = await request(app).get('/zodiacs');
     expect(res.body).toEqual(zodiacs);
   });
+  it('should return zodiac details', async () => {
+    const res = await request(app).get('/zodiacs/1');
+    expect(res.body).toEqual({
+      id: '1',
+      name: 'aquarius',
+      dates: 'Jan 21 - Feb 19',
+      symbol: 'Water Bearer',
+    });
+  })
   afterAll(() => {
     pool.end();
   });
