@@ -5,11 +5,11 @@ const app = require('../lib/app');
 const { get } = require('../lib/app');
 const { zodiacs } = require('../data/zodiacs');
 
-describe('backend-express-template routes', () => {
+describe('zodiacs-api routes', () => {
   beforeEach(() => {
     return setup(pool);
   });
-  it('should return a list of zodiacs', () => {
+  it('should return a list of zodiacs', async () => {
     const res = await request(app).get('/zodiacs');
     expect(res.body).toEqual(zodiacs);
   });
