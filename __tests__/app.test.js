@@ -9,9 +9,12 @@ describe('zodiacs-api routes', () => {
   beforeEach(() => {
     return setup(pool);
   });
-  it('should return a list of zodiacs', async () => {
+  it('should return a list of zodiacs with only their id and name', async () => {
     const res = await request(app).get('/zodiacs');
-    expect(res.body).toEqual(zodiacs);
+    const expected = zodiacs.map((zodiac) => {
+      return { id: zodiac.id, name: zodiac.name };
+    });
+    expect(res.body).toEqual(expected);
   });
   it('should return zodiac details', async () => {
     const res = await request(app).get('/zodiacs/1');
